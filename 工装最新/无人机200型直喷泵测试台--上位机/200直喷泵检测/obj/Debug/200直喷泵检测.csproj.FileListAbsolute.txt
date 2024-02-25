@@ -1,0 +1,12 @@
+c:\users\owner\documents\visual studio 2015\Projects\无人机200直喷泵测试台\200直喷泵检测\bin\Debug\200直喷泵检测.exe.config
+C:\Users\Owner\Desktop\无人机200直喷泵测试台\200直喷泵检测\bin\Debug\200直喷泵检测.exe.config
+C:\Users\Owner\Desktop\无人机200直喷泵测试台\200直喷泵检测\obj\Debug\200直喷泵检测.csproj.AssemblyReference.cache
+C:\Users\Owner\Desktop\无人机200直喷泵测试台\200直喷泵检测\obj\Debug\200直喷泵检测.csproj.SuggestedBindingRedirects.cache
+C:\Users\Owner\Desktop\无人机200直喷泵测试台\200直喷泵检测\obj\Debug\_200直喷泵检测.Form_Main.resources
+C:\Users\Owner\Desktop\无人机200直喷泵测试台\200直喷泵检测\obj\Debug\_200直喷泵检测.Properties.Resources.resources
+C:\Users\Owner\Desktop\无人机200直喷泵测试台\200直喷泵检测\obj\Debug\200直喷泵检测.csproj.GenerateResource.cache
+C:\Users\Owner\Desktop\无人机200直喷泵测试台\200直喷泵检测\obj\Debug\200直喷泵检测.csproj.CoreCompileInputs.cache
+C:\Users\Owner\Desktop\无人机200直喷泵测试台\200直喷泵检测\bin\Debug\200直喷泵检测.exe
+C:\Users\Owner\Desktop\无人机200直喷泵测试台\200直喷泵检测\bin\Debug\200直喷泵检测.pdb
+C:\Users\Owner\Desktop\无人机200直喷泵测试台\200直喷泵检测\obj\Debug\200直喷泵检测.exe
+C:\Users\Owner\Desktop\无人机200直喷泵测试台\200直喷泵检测\obj\Debug\200直喷泵检测.pdb

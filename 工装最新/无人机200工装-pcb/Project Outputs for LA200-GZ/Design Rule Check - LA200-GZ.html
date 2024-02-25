@@ -1,0 +1,411 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://D:\Users\Public\Documents\Altium\AD16\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">2021/12/31</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">17:04:36</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:01</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///F:\%E5%A4%A7%E7%9B%B4%E5%96%B7\%E5%A4%A7%E7%9B%B4%E5%96%B7%E6%96%B9%E6%A1%88%E4%BA%8C\%E6%97%A0%E4%BA%BA%E6%9C%BA200%E7%9B%B4%E5%96%B7%E6%B3%B5%E5%B7%A5%E8%A3%85%E4%BF%AE%E6%94%B9%E5%90%8E\LA200-GZ.PcbDoc" class="file"><acronym title="F:\大直喷\大直喷方案二\无人机200直喷泵工装修改后\LA200-GZ.PcbDoc">F:\大直喷\大直喷方案二\无人机200直喷泵工装修改后\LA200-GZ.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">9</td></tr>
+</table>
+</td>
+</table><a name="IDYACMOO41IE5BKFRC0ALEEVFMQCAA3JOFAUIBSVFX2QXR0AQWQXIB"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDM5FQT5NC1IGSHJ3TPO1V1C2D1EZCMGHV54RLCED5BETCA2HSU0HB">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDX5FX0BQUXTNGPJ1QHHNWZ4IUPEQZLQ2QHI00PQCSTRNOXCW12WLO">Net Antennae (Tolerance=5mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDONVLCGFDHYZGNS42I3CAEQLPNPATT0SY1RR3O1OLNEUGLSNIBQCJ">Silk to Silk (Clearance=0mil) (Disabled)(All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDBEUTZJRRYOSTO232JW1GPP0HZBUYKGEIE3IZBGFSVLBWXUQWY1HJ">Silk To Solder Mask (Clearance=0mil) (IsPad),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDIWZRH1ZOGURXG24ZSTGXLEAOHPMR4SPESEHXX5IWELJ1Y1X4XPEO">Minimum Solder Mask Sliver (Gap=10mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID2ZQXXOLJNR5JCYMR0MA0ZDRTRM5UEIRJDMMAQAPJRLBHMS0SBR3P">Minimum Solder Mask Sliver (Gap=0mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDR5EMOSNUMZECL4ORS2ZVBFSXJMAZR1CNBBMLZOFUJ5YCOAFE5VMC">Hole To Hole Clearance (Gap=5mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDU4NAAQJBHTK3EMG2R0TLHOHGIOUUZET1BHLA10BGFCHKTP3AYZ0D">Height Constraint (Min=0mil) (Max=10000mil) (Prefered=500mil) (Disabled)(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDMHSVCB4DSIJXIIHTQDVTJCMF1EZQY42TLA5BKW00T3HGSRTOXP">Hole Size Constraint (Min=0mil) (Max=2000mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDBPCWLGPLQJ0VEY4RGNOEVD43ECKWD2FIIRH4OMNXIY102OPTSZFN">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDQ5RFS2NJNYRNCXLNRESSOTKHZLHVCKNKUBGGLILDLXH5B2N4B4HD">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDJENLCBX2NY51DJLLYHGMFBWXEPF3G3GFEEI2FAPE5GTKH5JB33TB">Power Plane Connect Rule(Direct Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDVO4MTWAWM21GIZX3HYY0O5MUXMR3SZXCCE2MN1LIXTAMH5RTKEDC">Width Constraint (Min=6mil) (Max=200mil) (Preferred=10mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDQTSCBTS405OSJTKHGTZYEAOL3PNNZH2SA2OFHCJJSYPQBNTOKSON">Clearance Constraint (Gap=7mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID514IOG04VQD3HH0QQH4GVKMFBIRJGO0KPG1X0EOLUKEJAVUVYPTI">Clearance Constraint (Gap=10mil) (Disabled)(All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDCMGQN4QJBYHLOQD0WF2ZM1ZBFPWTDYDFSKV3ESDAOBA1Z4WMCOVJ">Clearance Constraint (Gap=20mil) (Disabled)(All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID0SQQAXB1AV4JM1DCXLUVQ0YTP4OQWMVHIFT4XOLZ4BIL4RGXUEI">Clearance Constraint (Gap=10mil) (Disabled)(InNet('VPROT_5V')),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDDT3ARI4KMI3NELMPRBO54XRMQOETIABV04THMZO0URYLXENUXSPH">Clearance Constraint (Gap=10mil) (Disabled)(InNet('VCC_5V')),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDSNNSUNJQIWA0PEPWIZFG1JZGZCLVBMG5TG0DPFGJRICKCPNDN">Clearance Constraint (Gap=30mil) (InNet('VBAT')),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID54CHGLVE5GXPHZKMCYCI4GB4XDX4XBQJUEG0XHIID03WXWJRQPM">Clearance Constraint (Gap=15mil) (Disabled)(InPolygon),(OnLayer('Keep-Out Layer'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID3QHGGR31KDD2BD0HPIYHJODPHFI34EJHYRQBXVKKUUA2XNDHXWKE">Clearance Constraint (Gap=10mil) (Disabled)(InNet('LOW2_OUT')),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDTBRT2XQV0E0NEKL0P0QH2AYNI1UY4RM2TWH2TCX5SLZ5RAUUDWJ">Clearance Constraint (Gap=22mil) (InNet('MARK2')),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDMUK3KHPJU1PHO144IGYBXILO5CWLRGRDUYY4QEELKRXHF5Z2VMPC">Clearance Constraint (Gap=22mil) (InNet('MARK1')),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDIXH3ZRA0QLDPE1MAFLFTAEBRXHMGJHYGNUX101HQS3IG2CN0ZDEK">Clearance Constraint (Gap=30mil) (InNet('PGND')),(InNet('GND'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID1B1HQ3JLGGARKIWUBF3OGCFYZB1URRDPR1XFJDKXVLFH2H0FAN1G">Clearance Constraint (Gap=20mil) (Disabled)(InNet('MAIN_PWR')),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID4XZAYRHXSQ3VBM2L3MXA2EPJ5EVVXCXESUUZOGNU3ZIKBRJXOD3H">Clearance Constraint (Gap=25mil) (InNet('VBAT')),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDW322NEKUS0R5LTYOUTUBMQWPCGUDDZAWIBJT5HPYFOIWFNWN4KAP">Clearance Constraint (Gap=20mil) (InNet('28V')),(All)</a></td>
+<td class="column2">9</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">9</td>
+</tr>
+</table><br><a name="IDW322NEKUS0R5LTYOUTUBMQWPCGUDDZAWIBJT5HPYFOIWFNWN4KAP"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Clearance Constraint (Gap=20mil) (InNet('28V')),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%A4%A7%E7%9B%B4%E5%96%B7\%E5%A4%A7%E7%9B%B4%E5%96%B7%E6%96%B9%E6%A1%88%E4%BA%8C\%E6%97%A0%E4%BA%BA%E6%9C%BA200%E7%9B%B4%E5%96%B7%E6%B3%B5%E5%B7%A5%E8%A3%85%E4%BF%AE%E6%94%B9%E5%90%8E\LA200-GZ.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=31672.306mil|Location2.X=31700.426mil|Location1.Y=22158.922mil|Location2.Y=22180.172mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\大直喷\大直喷方案二\无人机200直喷泵工装修改后\LA200-GZ.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=31672.306mil|Location2.X=31700.426mil|Location1.Y=22158.922mil|Location2.Y=22180.172mil|Absolute=True">Clearance Constraint: (18.701mil &lt; 20mil) Between Pad UP4-13(3576.181mil,2523.701mil) on Top Layer And Pad UP4-0(3525mil,2630mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%A4%A7%E7%9B%B4%E5%96%B7\%E5%A4%A7%E7%9B%B4%E5%96%B7%E6%96%B9%E6%A1%88%E4%BA%8C\%E6%97%A0%E4%BA%BA%E6%9C%BA200%E7%9B%B4%E5%96%B7%E6%B3%B5%E5%B7%A5%E8%A3%85%E4%BF%AE%E6%94%B9%E5%90%8E\LA200-GZ.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=31692.976mil|Location2.X=31714.226mil|Location1.Y=22077.435mil|Location2.Y=22107.83mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\大直喷\大直喷方案二\无人机200直喷泵工装修改后\LA200-GZ.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=31692.976mil|Location2.X=31714.226mil|Location1.Y=22077.435mil|Location2.Y=22107.83mil|Absolute=True">Clearance Constraint: (9.841mil &lt; 20mil) Between Track (3576.181mil,2464.705mil)(3576.181mil,2523.701mil) on Top Layer And Pad UP4-14(3601.772mil,2523.701mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%A4%A7%E7%9B%B4%E5%96%B7\%E5%A4%A7%E7%9B%B4%E5%96%B7%E6%96%B9%E6%A1%88%E4%BA%8C\%E6%97%A0%E4%BA%BA%E6%9C%BA200%E7%9B%B4%E5%96%B7%E6%B3%B5%E5%B7%A5%E8%A3%85%E4%BF%AE%E6%94%B9%E5%90%8E\LA200-GZ.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=31693.351mil|Location2.X=31714.601mil|Location1.Y=22077.435mil|Location2.Y=22107.83mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\大直喷\大直喷方案二\无人机200直喷泵工装修改后\LA200-GZ.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=31693.351mil|Location2.X=31714.601mil|Location1.Y=22077.435mil|Location2.Y=22107.83mil|Absolute=True">Clearance Constraint: (9.091mil &lt; 20mil) Between Pad UP4-13(3576.181mil,2523.701mil) on Top Layer And Pad UP4-14(3601.772mil,2523.701mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%A4%A7%E7%9B%B4%E5%96%B7\%E5%A4%A7%E7%9B%B4%E5%96%B7%E6%96%B9%E6%A1%88%E4%BA%8C\%E6%97%A0%E4%BA%BA%E6%9C%BA200%E7%9B%B4%E5%96%B7%E6%B3%B5%E5%B7%A5%E8%A3%85%E4%BF%AE%E6%94%B9%E5%90%8E\LA200-GZ.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=31667.386mil|Location2.X=31688.636mil|Location1.Y=22108.931mil|Location2.Y=22139.326mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\大直喷\大直喷方案二\无人机200直喷泵工装修改后\LA200-GZ.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=31667.386mil|Location2.X=31688.636mil|Location1.Y=22108.931mil|Location2.Y=22139.326mil|Absolute=True">Clearance Constraint: (9.841mil &lt; 20mil) Between Track (3550.591mil,2523.701mil)(3550.591mil,2585mil) on Top Layer And Pad UP4-13(3576.181mil,2523.701mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%A4%A7%E7%9B%B4%E5%96%B7\%E5%A4%A7%E7%9B%B4%E5%96%B7%E6%96%B9%E6%A1%88%E4%BA%8C\%E6%97%A0%E4%BA%BA%E6%9C%BA200%E7%9B%B4%E5%96%B7%E6%B3%B5%E5%B7%A5%E8%A3%85%E4%BF%AE%E6%94%B9%E5%90%8E\LA200-GZ.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=31693.726mil|Location2.X=31714.976mil|Location1.Y=22140.427mil|Location2.Y=22170.822mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\大直喷\大直喷方案二\无人机200直喷泵工装修改后\LA200-GZ.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=31693.726mil|Location2.X=31714.976mil|Location1.Y=22140.427mil|Location2.Y=22170.822mil|Absolute=True">Clearance Constraint: (9.841mil &lt; 20mil) Between Track (3601.772mil,2523.701mil)(3601.772mil,2582.697mil) on Top Layer And Pad UP4-13(3576.181mil,2523.701mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%A4%A7%E7%9B%B4%E5%96%B7\%E5%A4%A7%E7%9B%B4%E5%96%B7%E6%96%B9%E6%A1%88%E4%BA%8C\%E6%97%A0%E4%BA%BA%E6%9C%BA200%E7%9B%B4%E5%96%B7%E6%B3%B5%E5%B7%A5%E8%A3%85%E4%BF%AE%E6%94%B9%E5%90%8E\LA200-GZ.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=31667.761mil|Location2.X=31689.011mil|Location1.Y=22077.435mil|Location2.Y=22107.83mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\大直喷\大直喷方案二\无人机200直喷泵工装修改后\LA200-GZ.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=31667.761mil|Location2.X=31689.011mil|Location1.Y=22077.435mil|Location2.Y=22107.83mil|Absolute=True">Clearance Constraint: (9.091mil &lt; 20mil) Between Pad UP4-12(3550.591mil,2523.701mil) on Top Layer And Pad UP4-13(3576.181mil,2523.701mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%A4%A7%E7%9B%B4%E5%96%B7\%E5%A4%A7%E7%9B%B4%E5%96%B7%E6%96%B9%E6%A1%88%E4%BA%8C\%E6%97%A0%E4%BA%BA%E6%9C%BA200%E7%9B%B4%E5%96%B7%E6%B3%B5%E5%B7%A5%E8%A3%85%E4%BF%AE%E6%94%B9%E5%90%8E\LA200-GZ.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=31668.136mil|Location2.X=31689.386mil|Location1.Y=22077.435mil|Location2.Y=22107.83mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\大直喷\大直喷方案二\无人机200直喷泵工装修改后\LA200-GZ.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=31668.136mil|Location2.X=31689.386mil|Location1.Y=22077.435mil|Location2.Y=22107.83mil|Absolute=True">Clearance Constraint: (9.841mil &lt; 20mil) Between Track (3576.181mil,2464.705mil)(3576.181mil,2523.701mil) on Top Layer And Pad UP4-12(3550.591mil,2523.701mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%A4%A7%E7%9B%B4%E5%96%B7\%E5%A4%A7%E7%9B%B4%E5%96%B7%E6%96%B9%E6%A1%88%E4%BA%8C\%E6%97%A0%E4%BA%BA%E6%9C%BA200%E7%9B%B4%E5%96%B7%E6%B3%B5%E5%B7%A5%E8%A3%85%E4%BF%AE%E6%94%B9%E5%90%8E\LA200-GZ.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=31693.351mil|Location2.X=31714.601mil|Location1.Y=22108.931mil|Location2.Y=22139.326mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\大直喷\大直喷方案二\无人机200直喷泵工装修改后\LA200-GZ.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=31693.351mil|Location2.X=31714.601mil|Location1.Y=22108.931mil|Location2.Y=22139.326mil|Absolute=True">Clearance Constraint: (10.591mil &lt; 20mil) Between Track (3576.181mil,2464.705mil)(3576.181mil,2523.701mil) on Top Layer And Track (3601.772mil,2523.701mil)(3601.772mil,2582.697mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\%E5%A4%A7%E7%9B%B4%E5%96%B7\%E5%A4%A7%E7%9B%B4%E5%96%B7%E6%96%B9%E6%A1%88%E4%BA%8C\%E6%97%A0%E4%BA%BA%E6%9C%BA200%E7%9B%B4%E5%96%B7%E6%B3%B5%E5%B7%A5%E8%A3%85%E4%BF%AE%E6%94%B9%E5%90%8E\LA200-GZ.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=31667.761mil|Location2.X=31689.011mil|Location1.Y=22108.931mil|Location2.Y=22139.326mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\大直喷\大直喷方案二\无人机200直喷泵工装修改后\LA200-GZ.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=31667.761mil|Location2.X=31689.011mil|Location1.Y=22108.931mil|Location2.Y=22139.326mil|Absolute=True">Clearance Constraint: (10.591mil &lt; 20mil) Between Track (3576.181mil,2464.705mil)(3576.181mil,2523.701mil) on Top Layer And Track (3550.591mil,2523.701mil)(3550.591mil,2585mil) on Top Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
