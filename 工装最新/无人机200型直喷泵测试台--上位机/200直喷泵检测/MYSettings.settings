@@ -1,0 +1,51 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="_200直喷泵检测" GeneratedClassName="MYSettings">
+  <Profiles />
+  <Settings>
+    <Setting Name="start" Type="System.String" Scope="User">
+      <Value Profile="(Default)">40 11</Value>
+    </Setting>
+    <Setting Name="stop" Type="System.String" Scope="User">
+      <Value Profile="(Default)">40 55 </Value>
+    </Setting>
+    <Setting Name="ProjectName" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="test_ok" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="test_bad" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="send_ID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">00000040</Value>
+    </Setting>
+    <Setting Name="T_Low" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="T_Up" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="TotalUseMax" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1000</Value>
+    </Setting>
+    <Setting Name="TotalUse" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1000</Value>
+    </Setting>
+    <Setting Name="TIME_T1" Type="System.String" Scope="User">
+      <Value Profile="(Default)">21</Value>
+    </Setting>
+    <Setting Name="TIME_T2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">3D</Value>
+    </Setting>
+    <Setting Name="TIEM_T" Type="System.String" Scope="User">
+      <Value Profile="(Default)">64</Value>
+    </Setting>
+    <Setting Name="Cycle" Type="System.String" Scope="User">
+      <Value Profile="(Default)">24</Value>
+    </Setting>
+    <Setting Name="Spray_time" Type="System.String" Scope="User">
+      <Value Profile="(Default)">03E8</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

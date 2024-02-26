@@ -1,0 +1,35 @@
+Removed Pin From Net: NetName=VCC Pin=C3-1
+Removed Pin From Net: NetName=PGND Pin=C3-2
+Removed Pin From Net: NetName=28V Pin=UP1-1
+Removed Pin From Net: NetName=NetDP4_K Pin=UP1-2
+Removed Pin From Net: NetName=VCC Pin=UP1-3
+Removed Pin From Net: NetName=PGND Pin=UP1-5
+Removed Pin From Net: NetName=PGND Pin=UP1-7
+Change Component DesignItemId : Designator=C3 Old DesignItemId=3170011007 New DesignItemId=3172530019
+Change Component DesignItemId : Designator=UP1 Old DesignItemId=AX3007 New DesignItemId=TLF50201EL
+Change Component Footprint: Designator=C3 Old Footprint=C0603 New Footprint=C1206
+Change Component Footprint: Designator=UP1 Old Footprint=SOP-8L-EP New Footprint=SSOP14-EP2
+Change Component Comment : Designator=UP1 Old Comment=AX3007 New Comment=TLF50201EL
+Change Component Comment : Designator=DP4 Old Comment=B360A New Comment=SK36A-TR
+Change Component Comment : Designator=C3 Old Comment=C0603_1nF New Comment=C1206 10uF/50V 
+Change Component Comment : Designator=CP5 Old Comment=C0603 10nF/50V  New Comment=C0603 10nF/50V
+Change Component Comment : Designator=CP3 Old Comment=VZH471-16V New Comment=CE101010M-470uF/25V
+Change Component Description : Designator=DP4 Old Description=60V,1A,肖特基二极管 New Description=可试验使用S-LMBR160FT
+Added Component: Designator=RP4(0805_R)
+Added Pin To Net: NetName=PGND Pin=C3-1
+Added Pin To Net: NetName=VCC Pin=C3-2
+Added Pin To Net: NetName=PGND Pin=RP4-1
+Added Pin To Net: NetName=PGND Pin=UP1-1
+Added Pin To Net: NetName=PGND Pin=UP1-2
+Added Pin To Net: NetName=PGND Pin=UP1-3
+Added Pin To Net: NetName=VCC Pin=UP1-7
+Added Pin To Net: NetName=PGND Pin=UP1-9
+Added Pin To Net: NetName=PGND Pin=UP1-10
+Added Pin To Net: NetName=NetDP4_K Pin=UP1-11
+Added Pin To Net: NetName=PGND Pin=UP1-12
+Added Pin To Net: NetName=28V Pin=UP1-13
+Added Pin To Net: NetName=PGND Pin=UP1-14
+Added Pin To Net: NetName=NetRP4_2 Pin=RP4-2
+Added Pin To Net: NetName=NetRP4_2 Pin=UP1-5
+Added Net: Name=NetRP4_2
+Added Member To Class: ClassName=LA200-GZ Member=Component RP4 RP0805J-47K-1/4W

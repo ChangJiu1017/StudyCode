@@ -1,0 +1,14 @@
+Removed Pin From Net: NetName=28V Pin=CP1-1
+Removed Pin From Net: NetName=28V Pin=CP2-1
+Removed Pin From Net: NetName=28V Pin=CP7-1
+Removed Pin From Net: NetName=28V Pin=CP10-1
+Removed Pin From Net: NetName=28V Pin=DP1-1
+Removed Pin From Net: NetName=28V Pin=J2-1
+Added Pin To Net: NetName=PGND Pin=CP1-1
+Added Pin To Net: NetName=PGND Pin=CP2-1
+Added Pin To Net: NetName=PGND Pin=CP7-1
+Added Pin To Net: NetName=PGND Pin=CP10-1
+Added Pin To Net: NetName=PGND Pin=DP1-1
+Added Pin To Net: NetName=PGND Pin=J2-1
+Change Net Name : Old Net Name=28V New Net Name=NetDP4_K
+Change Net Name : Old Net Name=PGND New Net Name=28V

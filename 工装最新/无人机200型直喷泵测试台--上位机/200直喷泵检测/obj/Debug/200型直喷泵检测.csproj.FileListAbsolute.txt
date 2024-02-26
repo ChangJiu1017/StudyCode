@@ -1,0 +1,112 @@
+C:\Users\Owner\Desktop\无人机200直喷泵测试台\200直喷泵检测\obj\Debug\200型直喷泵检测.csproj.AssemblyReference.cache
+C:\Users\Owner\Desktop\无人机200直喷泵测试台\200直喷泵检测\obj\Debug\200型直喷泵检测.csproj.SuggestedBindingRedirects.cache
+C:\Users\Owner\Desktop\无人机200直喷泵测试台\200直喷泵检测\obj\Debug\_200直喷泵检测.Form_Main.resources
+C:\Users\Owner\Desktop\无人机200直喷泵测试台\200直喷泵检测\obj\Debug\_200直喷泵检测.Properties.Resources.resources
+C:\Users\Owner\Desktop\无人机200直喷泵测试台\200直喷泵检测\obj\Debug\200型直喷泵检测.csproj.GenerateResource.cache
+C:\Users\Owner\Desktop\无人机200直喷泵测试台\200直喷泵检测\obj\Debug\200型直喷泵检测.csproj.CoreCompileInputs.cache
+C:\Users\Owner\Desktop\无人机200直喷泵测试台\200直喷泵检测\obj\Debug\200直喷泵检测.exe
+C:\Users\Owner\Desktop\无人机200直喷泵测试台\200直喷泵检测\obj\Debug\200直喷泵检测.pdb
+C:\Users\Owner\Desktop\无人机200直喷泵测试台\200直喷泵检测\bin\Debug\200直喷泵检测.exe.config
+C:\Users\Owner\Desktop\无人机200直喷泵测试台\200直喷泵检测\bin\Debug\200直喷泵检测.exe
+C:\Users\Owner\Desktop\无人机200直喷泵测试台\200直喷泵检测\bin\Debug\200直喷泵检测.pdb
+C:\Users\Owner\Desktop\无人机200直喷泵测试台\200直喷泵检测\obj\Debug\_200直喷泵检测.FormRecord.resources
+C:\Users\Owner\Desktop\无人机200直喷泵测试台\200直喷泵检测\obj\Debug\_200直喷泵检测.ProjectManageForm.resources
+C:\Users\Owner\Desktop\211116周二 下午保存备份，上位机程序基本完成\无人机200直喷泵测试台\200直喷泵检测\bin\Debug\200直喷泵检测.exe.config
+C:\Users\Owner\Desktop\211116周二 下午保存备份，上位机程序基本完成\无人机200直喷泵测试台\200直喷泵检测\bin\Debug\200直喷泵检测.exe
+C:\Users\Owner\Desktop\211116周二 下午保存备份，上位机程序基本完成\无人机200直喷泵测试台\200直喷泵检测\bin\Debug\200直喷泵检测.pdb
+C:\Users\Owner\Desktop\211116周二 下午保存备份，上位机程序基本完成\无人机200直喷泵测试台\200直喷泵检测\obj\Debug\200型直喷泵检测.csproj.AssemblyReference.cache
+C:\Users\Owner\Desktop\211116周二 下午保存备份，上位机程序基本完成\无人机200直喷泵测试台\200直喷泵检测\obj\Debug\200型直喷泵检测.csproj.SuggestedBindingRedirects.cache
+C:\Users\Owner\Desktop\211116周二 下午保存备份，上位机程序基本完成\无人机200直喷泵测试台\200直喷泵检测\obj\Debug\_200直喷泵检测.FormRecord.resources
+C:\Users\Owner\Desktop\211116周二 下午保存备份，上位机程序基本完成\无人机200直喷泵测试台\200直喷泵检测\obj\Debug\_200直喷泵检测.Form_Main.resources
+C:\Users\Owner\Desktop\211116周二 下午保存备份，上位机程序基本完成\无人机200直喷泵测试台\200直喷泵检测\obj\Debug\_200直喷泵检测.ProjectManageForm.resources
+C:\Users\Owner\Desktop\211116周二 下午保存备份，上位机程序基本完成\无人机200直喷泵测试台\200直喷泵检测\obj\Debug\_200直喷泵检测.Properties.Resources.resources
+C:\Users\Owner\Desktop\211116周二 下午保存备份，上位机程序基本完成\无人机200直喷泵测试台\200直喷泵检测\obj\Debug\200型直喷泵检测.csproj.GenerateResource.cache
+C:\Users\Owner\Desktop\211116周二 下午保存备份，上位机程序基本完成\无人机200直喷泵测试台\200直喷泵检测\obj\Debug\200型直喷泵检测.csproj.CoreCompileInputs.cache
+C:\Users\Owner\Desktop\211116周二 下午保存备份，上位机程序基本完成\无人机200直喷泵测试台\200直喷泵检测\obj\Debug\200直喷泵检测.exe
+C:\Users\Owner\Desktop\211116周二 下午保存备份，上位机程序基本完成\无人机200直喷泵测试台\200直喷泵检测\obj\Debug\200直喷泵检测.pdb
+C:\Users\Owner\Desktop\无人机200型直喷泵测试工装\无人机200型直喷泵测试台--上位机\200直喷泵检测\bin\Debug\200直喷泵检测.exe.config
+C:\Users\Owner\Desktop\无人机200型直喷泵测试工装\无人机200型直喷泵测试台--上位机\200直喷泵检测\bin\Debug\200直喷泵检测.exe
+C:\Users\Owner\Desktop\无人机200型直喷泵测试工装\无人机200型直喷泵测试台--上位机\200直喷泵检测\bin\Debug\200直喷泵检测.pdb
+C:\Users\Owner\Desktop\无人机200型直喷泵测试工装\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\200型直喷泵检测.csproj.AssemblyReference.cache
+C:\Users\Owner\Desktop\无人机200型直喷泵测试工装\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\200型直喷泵检测.csproj.SuggestedBindingRedirects.cache
+C:\Users\Owner\Desktop\无人机200型直喷泵测试工装\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\_200直喷泵检测.FormRecord.resources
+C:\Users\Owner\Desktop\无人机200型直喷泵测试工装\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\_200直喷泵检测.Form_Main.resources
+C:\Users\Owner\Desktop\无人机200型直喷泵测试工装\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\_200直喷泵检测.ProjectManageForm.resources
+C:\Users\Owner\Desktop\无人机200型直喷泵测试工装\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\_200直喷泵检测.Properties.Resources.resources
+C:\Users\Owner\Desktop\无人机200型直喷泵测试工装\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\200型直喷泵检测.csproj.GenerateResource.cache
+C:\Users\Owner\Desktop\无人机200型直喷泵测试工装\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\200型直喷泵检测.csproj.CoreCompileInputs.cache
+C:\Users\Owner\Desktop\无人机200型直喷泵测试工装\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\200直喷泵检测.exe
+C:\Users\Owner\Desktop\无人机200型直喷泵测试工装\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\200直喷泵检测.pdb
+C:\Users\Owner\Desktop\无人机200型直喷泵测试台--上位机\200直喷泵检测\bin\Debug\200直喷泵检测.exe.config
+C:\Users\Owner\Desktop\无人机200型直喷泵测试台--上位机\200直喷泵检测\bin\Debug\200直喷泵检测.exe
+C:\Users\Owner\Desktop\无人机200型直喷泵测试台--上位机\200直喷泵检测\bin\Debug\200直喷泵检测.pdb
+C:\Users\Owner\Desktop\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\200型直喷泵检测.csproj.AssemblyReference.cache
+C:\Users\Owner\Desktop\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\200型直喷泵检测.csproj.SuggestedBindingRedirects.cache
+C:\Users\Owner\Desktop\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\_200直喷泵检测.FormRecord.resources
+C:\Users\Owner\Desktop\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\_200直喷泵检测.Form_Main.resources
+C:\Users\Owner\Desktop\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\_200直喷泵检测.ProjectManageForm.resources
+C:\Users\Owner\Desktop\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\_200直喷泵检测.Properties.Resources.resources
+C:\Users\Owner\Desktop\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\200型直喷泵检测.csproj.GenerateResource.cache
+C:\Users\Owner\Desktop\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\200型直喷泵检测.csproj.CoreCompileInputs.cache
+C:\Users\Owner\Desktop\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\200直喷泵检测.exe
+C:\Users\Owner\Desktop\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\200直喷泵检测.pdb
+E:\工作相关资料文件夹\无人机200型直喷泵测试台--上位机\200直喷泵检测\bin\Debug\200直喷泵检测.exe.config
+E:\工作相关资料文件夹\无人机200型直喷泵测试台--上位机\200直喷泵检测\bin\Debug\200直喷泵检测.exe
+E:\工作相关资料文件夹\无人机200型直喷泵测试台--上位机\200直喷泵检测\bin\Debug\200直喷泵检测.pdb
+E:\工作相关资料文件夹\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\200型直喷泵检测.csproj.AssemblyReference.cache
+E:\工作相关资料文件夹\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\200型直喷泵检测.csproj.SuggestedBindingRedirects.cache
+E:\工作相关资料文件夹\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\_200直喷泵检测.FormRecord.resources
+E:\工作相关资料文件夹\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\_200直喷泵检测.Form_Main.resources
+E:\工作相关资料文件夹\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\_200直喷泵检测.ProjectManageForm.resources
+E:\工作相关资料文件夹\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\_200直喷泵检测.Properties.Resources.resources
+E:\工作相关资料文件夹\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\200型直喷泵检测.csproj.GenerateResource.cache
+E:\工作相关资料文件夹\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\200型直喷泵检测.csproj.CoreCompileInputs.cache
+E:\工作相关资料文件夹\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\200直喷泵检测.exe
+E:\工作相关资料文件夹\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\200直喷泵检测.pdb
+C:\Users\Owner\Desktop\无人机工装相关文件\无人机200型直喷泵测试台--上位机\200直喷泵检测\bin\Debug\200直喷泵检测.exe.config
+C:\Users\Owner\Desktop\无人机工装相关文件\无人机200型直喷泵测试台--上位机\200直喷泵检测\bin\Debug\200直喷泵检测.exe
+C:\Users\Owner\Desktop\无人机工装相关文件\无人机200型直喷泵测试台--上位机\200直喷泵检测\bin\Debug\200直喷泵检测.pdb
+C:\Users\Owner\Desktop\无人机工装相关文件\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\200型直喷泵检测.csproj.AssemblyReference.cache
+C:\Users\Owner\Desktop\无人机工装相关文件\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\200型直喷泵检测.csproj.SuggestedBindingRedirects.cache
+C:\Users\Owner\Desktop\无人机工装相关文件\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\_200直喷泵检测.FormRecord.resources
+C:\Users\Owner\Desktop\无人机工装相关文件\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\_200直喷泵检测.Form_Main.resources
+C:\Users\Owner\Desktop\无人机工装相关文件\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\_200直喷泵检测.ProjectManageForm.resources
+C:\Users\Owner\Desktop\无人机工装相关文件\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\_200直喷泵检测.Properties.Resources.resources
+C:\Users\Owner\Desktop\无人机工装相关文件\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\200型直喷泵检测.csproj.GenerateResource.cache
+C:\Users\Owner\Desktop\无人机工装相关文件\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\200型直喷泵检测.csproj.CoreCompileInputs.cache
+C:\Users\Owner\Desktop\无人机工装相关文件\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\200直喷泵检测.exe
+C:\Users\Owner\Desktop\无人机工装相关文件\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\200直喷泵检测.pdb
+C:\Users\Owner\Desktop\无人机工装相关文件\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\200型直喷泵检测.csproj.ResolveComReference.cache
+C:\Users\Owner\Desktop\无人机工装相关文件\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\_200直喷泵检测.Form_balance.resources
+C:\Users\Owner\Desktop\无人机工装相关文件\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\_200直喷泵检测.TestFileSetForm.resources
+C:\Users\Owner\Desktop\无人机工装相关文件\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\_200直喷泵检测.GetScaleWeightForm.resources
+C:\Users\Owner\Desktop\无人机工装相关文件\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\_200直喷泵检测.ClearScaleForm.resources
+C:\Users\Owner\Desktop\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\200型直喷泵检测.csproj.ResolveComReference.cache
+C:\Users\Owner\Desktop\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\_200直喷泵检测.ClearScaleForm.resources
+C:\Users\Owner\Desktop\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\_200直喷泵检测.Form_balance.resources
+C:\Users\Owner\Desktop\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\_200直喷泵检测.GetScaleWeightForm.resources
+C:\Users\Owner\Desktop\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\_200直喷泵检测.TestFileSetForm.resources
+C:\Users\Owner\Desktop\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\_200直喷泵检测.Form_argement.resources
+C:\Users\Owner\Desktop\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\_200直喷泵检测.FormRecord_2.resources
+C:\Users\Owner\Desktop\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\_200直喷泵检测.Form_Hint.resources
+C:\Users\Owner\Desktop\测试工装\工装最新\无人机200型直喷泵测试台--上位机\200直喷泵检测\bin\Debug\200直喷泵检测.exe.config
+C:\Users\Owner\Desktop\测试工装\工装最新\无人机200型直喷泵测试台--上位机\200直喷泵检测\bin\Debug\200直喷泵检测.exe
+C:\Users\Owner\Desktop\测试工装\工装最新\无人机200型直喷泵测试台--上位机\200直喷泵检测\bin\Debug\200直喷泵检测.pdb
+C:\Users\Owner\Desktop\测试工装\工装最新\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\200型直喷泵检测.csproj.AssemblyReference.cache
+C:\Users\Owner\Desktop\测试工装\工装最新\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\200型直喷泵检测.csproj.SuggestedBindingRedirects.cache
+C:\Users\Owner\Desktop\测试工装\工装最新\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\200型直喷泵检测.csproj.ResolveComReference.cache
+C:\Users\Owner\Desktop\测试工装\工装最新\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\_200直喷泵检测.ClearScaleForm.resources
+C:\Users\Owner\Desktop\测试工装\工装最新\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\_200直喷泵检测.FormRecord.resources
+C:\Users\Owner\Desktop\测试工装\工装最新\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\_200直喷泵检测.FormRecord_2.resources
+C:\Users\Owner\Desktop\测试工装\工装最新\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\_200直喷泵检测.Form_argement.resources
+C:\Users\Owner\Desktop\测试工装\工装最新\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\_200直喷泵检测.Form_balance.resources
+C:\Users\Owner\Desktop\测试工装\工装最新\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\_200直喷泵检测.Form_Hint.resources
+C:\Users\Owner\Desktop\测试工装\工装最新\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\_200直喷泵检测.Form_Main.resources
+C:\Users\Owner\Desktop\测试工装\工装最新\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\_200直喷泵检测.GetScaleWeightForm.resources
+C:\Users\Owner\Desktop\测试工装\工装最新\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\_200直喷泵检测.ProjectManageForm.resources
+C:\Users\Owner\Desktop\测试工装\工装最新\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\_200直喷泵检测.Properties.Resources.resources
+C:\Users\Owner\Desktop\测试工装\工装最新\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\_200直喷泵检测.TestFileSetForm.resources
+C:\Users\Owner\Desktop\测试工装\工装最新\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\200型直喷泵检测.csproj.GenerateResource.cache
+C:\Users\Owner\Desktop\测试工装\工装最新\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\200型直喷泵检测.csproj.CoreCompileInputs.cache
+C:\Users\Owner\Desktop\测试工装\工装最新\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\200直喷泵检测.exe
+C:\Users\Owner\Desktop\测试工装\工装最新\无人机200型直喷泵测试台--上位机\200直喷泵检测\obj\Debug\200直喷泵检测.pdb

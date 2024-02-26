@@ -1,0 +1,10 @@
+Output: Mixed Sim
+Type  : AdvSimNetlist
+From  : Project [LA200-GZ.PrjPcb]
+   Generated File[LA200-GZ.nsx]
+
+
+Files Generated   : 1
+Documents Printed : 0
+
+Finished Output Generation At 16:49:45 On 2022/2/15
