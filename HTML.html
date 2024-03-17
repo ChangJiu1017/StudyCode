@@ -21,7 +21,7 @@
 </head>
 <body>
 
-    <!-- <button id="btn">唐伯�?</button>
+    <!-- <button id="btn">tangbohu</button>
     <div>123</div> -->
     <button>显示当前系统</button>
     <div>某个时间</div>
@@ -34,16 +34,16 @@
         // var html =document.documentElement
         // console.log(html);
 
-        //1、点击一�?按钮，弹出�?�话�?
-        //2、事件源、事件类型、事件�?�理程序
+        //1、点击按钮激活事件
+        //2、事件源、事件类型、事件处理程序
         // var btn = document.getElementById('btn');
         // btn.onclick = function(){
-        //     alert('点�?��??');
+        //     alert('点击');
         // }
 
         // var div = document.querySelector('div');
         // div.onclick = function(){
-        //     alert('我�??选中�?');
+        //     alert('我被选中了');
         // }
 
         var btn = document.querySelector('button');
@@ -63,7 +63,7 @@
             var sncond = date.getSeconds();
             var arr = ['7','6','5','4','3','2','1'];
             var day = date.getDay();
-            return '今天�?�?'+ year + '�?' + month + '�?'+ dates + '�?' + hours +'�?'+ minut +'�?'+ sncond +'�?'+ arr[day];
+            return '今天日期是：'+ year + '年' + month + '月'+ dates + '日' + hours +'时'+ minut +'分'+ sncond +'秒'+ arr[day];
             
 
         }
