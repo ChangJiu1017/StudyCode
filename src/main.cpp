@@ -3,7 +3,7 @@
 
 int main() {
 
-    CAutoPtr().auto_share_ptr();
+    CAutoPtr::auto_share_ptr();
 
     return 0;
 }
