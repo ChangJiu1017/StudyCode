@@ -36,3 +36,6 @@
 6. **使用RAII技术**：尽量使用RAII(Resource Acquisition Is Initialization)技术，确保资源在作用域结束时被正确释放。
 
 希望这些建议对你有所帮助！如果有其他问题，欢迎继续提问哦！👩‍💻🔒
+
+
+### GitKranken
