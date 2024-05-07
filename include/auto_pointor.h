@@ -52,10 +52,10 @@ public:
 class CAutoPtr {
 
 public:
-    CAutoPtr(){}
-    ~CAutoPtr(){}
+    CAutoPtr()= default;
+    ~CAutoPtr()= default;
 
-    uint32_t unique_prt()
+    static uint32_t unique_prt()
     {
         unique_ptr<string> p1(new string("I'm chang xin yu!"));
         unique_ptr<string> p2(new string("I'm age 25."));
@@ -76,7 +76,7 @@ public:
         return 0;
     }
 
-    uint32_t unique_stl_ptr()
+    static uint32_t unique_stl_ptr()
     {
         vector<unique_ptr<string>> vec;
         unique_ptr<string> p3(new string("I'm P3"));
@@ -101,7 +101,7 @@ public:
     //unique_ptr<int[]> array(new int[5]);	// 支持这样定义
 
 
-    uint32_t auto_share_ptr()
+    static uint32_t auto_share_ptr()
     {
         shared_ptr<Person> sp1;
 
@@ -124,7 +124,7 @@ public:
     }
 
 
-    void auto_weak_ptr()
+    static void auto_weak_ptr()
     {
         shared_ptr<Boy> spBoy(new Boy());
         shared_ptr<Girl> spGirl(new Girl());
