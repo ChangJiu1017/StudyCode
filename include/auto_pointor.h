@@ -121,6 +121,8 @@ public:
         cout << "sp1	use_count() = " << sp1.use_count() << endl;
         cout << "sp2	use_count() = " << sp2.use_count() << endl;
         cout << "sp2	use_count() = " << sp3.use_count() << endl << endl;
+
+        return 0;
     }
 
 
