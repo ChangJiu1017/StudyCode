@@ -1,3 +1,0 @@
-D:/StudyOrWork/StudyCode/StudyCode/cmake-build-debug/CMakeFiles/StudyCode.dir
-D:/StudyOrWork/StudyCode/StudyCode/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/StudyOrWork/StudyCode/StudyCode/cmake-build-debug/CMakeFiles/rebuild_cache.dir

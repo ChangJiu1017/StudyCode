@@ -17,7 +17,7 @@ file(GLOB SOURCES ${SOURCE_DIR}/*.cpp)
 include_directories(${INCLUDE_DIR})
 
 # 添加可执行文件
-add_executable(StudyCode ${SOURCES}
-        include/std_function.h
-        include/call_back_function.h
-        include/std_range.h)
+add_executable(StudyCode ${SOURCES})
+        # include/std_function.h
+        # include/call_back_function.h
+        # include/std_range.h)
