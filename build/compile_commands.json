@@ -1,8 +1,0 @@
-[
-{
-  "directory": "D:/StudyOrWork/StudyCode/StudyCode/build",
-  "command": "D:\\LenovoSoftstore\\MinGW\\mingw64\\bin\\g++.exe  @CMakeFiles/StudyCode.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\StudyCode.dir\\src\\main.cpp.obj -c D:\\StudyOrWork\\StudyCode\\StudyCode\\src\\main.cpp",
-  "file": "D:/StudyOrWork/StudyCode/StudyCode/src/main.cpp",
-  "output": "CMakeFiles/StudyCode.dir/src/main.cpp.obj"
-}
-]

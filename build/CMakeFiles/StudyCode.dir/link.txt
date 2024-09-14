@@ -1,3 +1,1 @@
-D:\LenovoSoftstore\VisualStudio\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe -E rm -f CMakeFiles\StudyCode.dir/objects.a
-D:\LenovoSoftstore\MinGW\mingw64\bin\ar.exe qc CMakeFiles\StudyCode.dir/objects.a @CMakeFiles\StudyCode.dir\objects1.rsp
-D:\LenovoSoftstore\MinGW\mingw64\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\StudyCode.dir/objects.a -Wl,--no-whole-archive -o StudyCode.exe -Wl,--out-implib,libStudyCode.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\StudyCode.dir\linkLibs.rsp
+/usr/bin/c++    -rdynamic CMakeFiles/StudyCode.dir/src/main.cpp.o  -o StudyCode 
