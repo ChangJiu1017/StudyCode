@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/linux_math.h
+
+/home/changxinyu/linux_git/StudyCode/src/main.c
+stdio.h
+-
+linux_math.h
+/home/changxinyu/linux_git/StudyCode/src/linux_math.h
+

@@ -1,0 +1,4 @@
+/home/changxinyu/linux_git/StudyCode/build/CMakeFiles/rebuild_cache.dir
+/home/changxinyu/linux_git/StudyCode/build/CMakeFiles/edit_cache.dir
+/home/changxinyu/linux_git/StudyCode/build/CMakeFiles/linuxmath.dir
+/home/changxinyu/linux_git/StudyCode/build/CMakeFiles/main.dir

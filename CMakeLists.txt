@@ -1,24 +1,14 @@
-cmake_minimum_required(VERSION 3.0) 
+cmake_minimum_required(VERSION 3.10)
+project(MyLibrary C)
 
-project(StudyCode)  
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD_REQUIRED ON)
 
-# 设置 C++ 标准
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+add_library(linuxmath SHARED src/linux_math.c)
 
-# 设置源文件目录
-set(SOURCE_DIR ${PROJECT_SOURCE_DIR}/src)
-set(INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
+include_directories(${PROJECT_SOURCE_DIR}/include)
 
-# 添加源文件
-file(GLOB SOURCES ${SOURCE_DIR}/*.cpp)
+target_include_directories(linuxmath PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
-
-# 包含头文件目录
-include_directories(StudyCode PRIVATE ${PROJECT_SOURCE_DIR}/include)
-
-# 添加可执行文件
-add_executable(StudyCode ${SOURCES})
-        # include/std_function.h
-        # include/call_back_function.h
-        # include/std_range.h)
+add_executable(main ${PROJECT_SOURCE_DIR}/src/main.c)
+target_link_libraries(main linuxmath)
