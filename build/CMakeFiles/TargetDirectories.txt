@@ -1,3 +1,0 @@
-/home/changxinyu/linux_git/StudyCode/build/CMakeFiles/rebuild_cache.dir
-/home/changxinyu/linux_git/StudyCode/build/CMakeFiles/StudyCode.dir
-/home/changxinyu/linux_git/StudyCode/build/CMakeFiles/edit_cache.dir

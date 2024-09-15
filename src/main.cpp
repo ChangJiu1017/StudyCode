@@ -1,7 +1,11 @@
+
 #include <iostream>
 #include <string>
+#include <fstream>
 #include <vector>
 #include <cstring>
+#include "linux_fstream.h"
+
 
 // 模拟数据包的结构
 struct Packet {
@@ -122,19 +126,30 @@ void receivePacket(Packet packet) {
     std::cout << "---- Packet Received ----\n" << std::endl;
 }
 
-int main() {
-    std::string data = "GET /index.html";
-    std::string sourceIP = "192.168.1.2";
-    std::string destIP = "192.168.1.1";
-    int sourcePort = 8080;
-    int destPort = 80;
+// int main() {
+//     std::string data = "GET /index.html";
+//     std::string sourceIP = "192.168.1.2";
+//     std::string destIP = "192.168.1.1";
+//     int sourcePort = 8080;
+//     int destPort = 80;
 
-    // 模拟发送数据包
-    sendPacket(data, sourceIP, destIP, sourcePort, destPort);
+//     // 模拟发送数据包
+//     sendPacket(data, sourceIP, destIP, sourcePort, destPort);
 
-    // 模拟接收数据包
-    Packet receivedPacket = ApplicationLayer::createRequest("HTTP RESPONSE: 200 OK", destIP, sourceIP, destPort, sourcePort);
-    receivePacket(receivedPacket);
+//     // 模拟接收数据包
+//     Packet receivedPacket = ApplicationLayer::createRequest("HTTP RESPONSE: 200 OK", destIP, sourceIP, destPort, sourcePort);
+//     receivePacket(receivedPacket);
 
+//     return 0;
+// }
+
+
+
+
+int main()
+{
+
+    linux_fstream();
+    
     return 0;
 }
