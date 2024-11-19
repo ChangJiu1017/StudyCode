@@ -1,55 +1,35 @@
-// shared_memory_sysv.cpp
+// shared_memory_sysv.h
 
-#include "shared_memory_sysv.h"
+#ifndef SHARED_MEMORY_SYSV_H
+#define SHARED_MEMORY_SYSV_H
 
-SharedMemoryManager::SharedMemoryManager() : shm_id(-1), shm_addr(nullptr) {}
+#include <sys/ipc.h>
+#include <sys/shm.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <cstring>
+#include <iostream>
 
-SharedMemoryManager::~SharedMemoryManager() {
-    closeSharedMemory();
-}
+#define SHM_SIZE 1024  // 环形缓冲区的大小
 
-bool SharedMemoryManager::createSharedMemory(bool initialize) {
-    // 创建共享内存
-    key_t key = ftok("/tmp", 'R');  // 生成一个唯一的key值
-    if (key == -1) {
-        perror("ftok failed");
-        return false;
-    }
+// 环形缓冲区结构
+struct RingBuffer {
+    size_t head;
+    size_t tail;
+    char buffer[SHM_SIZE];  // 数据缓冲区
+};
 
-    // 获取共享内存标识符
-    shm_id = shmget(key, sizeof(RingBuffer), IPC_CREAT | 0666);
-    if (shm_id == -1) {
-        perror("shmget failed");
-        return false;
-    }
+class SharedMemoryManager {
+public:
+    SharedMemoryManager();
+    ~SharedMemoryManager();
+    bool createSharedMemory(bool initialize);
+    RingBuffer* getRingBuffer();
+    void closeSharedMemory();
 
-    // 映射共享内存
-    shm_addr = static_cast<RingBuffer*>(shmat(shm_id, nullptr, 0));
-    if (shm_addr == (void*) -1) {
-        perror("shmat failed");
-        return false;
-    }
+private:
+    int shm_id;      // 共享内存ID
+    RingBuffer* shm_addr;  // 映射到进程的共享内存地址
+};
 
-    // 如果是初始化操作，设置环形缓冲区
-    if (initialize) {
-        shm_addr->head = 0;
-        shm_addr->tail = 0;
-    }
-
-    return true;
-}
-
-RingBuffer* SharedMemoryManager::getRingBuffer() {
-    return shm_addr;
-}
-
-void SharedMemoryManager::closeSharedMemory() {
-    if (shm_addr) {
-        shmdt(shm_addr);  // 分离共享内存
-        shm_addr = nullptr;
-    }
-    if (shm_id != -1) {
-        shmctl(shm_id, IPC_RMID, nullptr);  // 删除共享内存段
-        shm_id = -1;
-    }
-}
+#endif // SHARED_MEMORY_SYSV_H
