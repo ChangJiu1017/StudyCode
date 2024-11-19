@@ -1,6 +1,6 @@
 // writer.cpp
 
-#include "shared_memory_ring_buffer.h"
+#include "shared_memory_sysv.h"
 
 int main() {
     SharedMemoryManager shm;
@@ -9,20 +9,17 @@ int main() {
     }
 
     RingBuffer* buffer = shm.getRingBuffer();
-    const char* message = "Hello, Shared Memory!";
+    const char* message = "Hello, System V Shared Memory!";
     size_t message_length = strlen(message);
 
+    // 写入数据到共享内存的环形缓冲区
     for (size_t i = 0; i < message_length; ++i) {
-        sem_wait(&buffer->empty_slots);  // 等待可写槽位
-        pthread_spin_lock(&buffer->lock);
-
+        // 循环写入数据
         buffer->buffer[buffer->tail] = message[i];
-        buffer->tail = (buffer->tail + 1) % BUFFER_SIZE;
-
-        pthread_spin_unlock(&buffer->lock);
-        sem_post(&buffer->filled_slots);  // 通知有新数据
+        buffer->tail = (buffer->tail + 1) % SHM_SIZE;
     }
 
-    std::cout << "Writer: Message written to shared memory." << std::endl;
+    std::cout << "Message written to shared memory: " << message << std::endl;
+
     return 0;
 }
