@@ -1,6 +1,6 @@
 // reader.cpp
 
-#include "shared_memory_ring_buffer.h"
+#include "shared_memory_sysv.h"
 
 int main() {
     SharedMemoryManager shm;
@@ -9,20 +9,16 @@ int main() {
     }
 
     RingBuffer* buffer = shm.getRingBuffer();
-    char received[BUFFER_SIZE] = {0};
+    char received[SHM_SIZE] = {0};
     size_t index = 0;
 
-    for (size_t i = 0; i < BUFFER_SIZE; ++i) {
-        sem_wait(&buffer->filled_slots);  // 等待有数据
-        pthread_spin_lock(&buffer->lock);
-
+    // 读取共享内存中的数据
+    while (buffer->head != buffer->tail) {  // 直到缓冲区为空
         received[index++] = buffer->buffer[buffer->head];
-        buffer->head = (buffer->head + 1) % BUFFER_SIZE;
-
-        pthread_spin_unlock(&buffer->lock);
-        sem_post(&buffer->empty_slots);  // 通知释放槽位
+        buffer->head = (buffer->head + 1) % SHM_SIZE;
     }
 
-    std::cout << "Reader: Received message: " << received << std::endl;
+    std::cout << "Message read from shared memory: " << received << std::endl;
+
     return 0;
 }

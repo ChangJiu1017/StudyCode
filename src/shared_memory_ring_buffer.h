@@ -1,41 +1,55 @@
-// shared_memory_ring_buffer.h
+// shared_memory_sysv.cpp
 
-#ifndef SHARED_MEMORY_RING_BUFFER_H
-#define SHARED_MEMORY_RING_BUFFER_H
+#include "shared_memory_sysv.h"
 
-#include <fcntl.h>
-#include <pthread.h>
-#include <semaphore.h>
-#include <sys/mman.h>
-#include <unistd.h>
-#include <cstring>
-#include <iostream>
+SharedMemoryManager::SharedMemoryManager() : shm_id(-1), shm_addr(nullptr) {}
 
-#define SHM_NAME "/shared_ring_buffer"
-#define BUFFER_SIZE 1024  // 环形缓冲区大小
+SharedMemoryManager::~SharedMemoryManager() {
+    closeSharedMemory();
+}
 
-// 环形缓冲区结构
-struct RingBuffer {
-    pthread_spinlock_t lock;  // 自旋锁
-    sem_t empty_slots;        // 可写槽位信号量
-    sem_t filled_slots;       // 可读槽位信号量
-    size_t head;              // 读指针
-    size_t tail;              // 写指针
-    char buffer[BUFFER_SIZE]; // 数据缓冲区
-};
+bool SharedMemoryManager::createSharedMemory(bool initialize) {
+    // 创建共享内存
+    key_t key = ftok("/tmp", 'R');  // 生成一个唯一的key值
+    if (key == -1) {
+        perror("ftok failed");
+        return false;
+    }
 
-class SharedMemoryManager {
-public:
-    SharedMemoryManager();
-    ~SharedMemoryManager();
-    bool createSharedMemory(bool initialize);
-    RingBuffer* getRingBuffer();
-    void closeSharedMemory();
+    // 获取共享内存标识符
+    shm_id = shmget(key, sizeof(RingBuffer), IPC_CREAT | 0666);
+    if (shm_id == -1) {
+        perror("shmget failed");
+        return false;
+    }
 
-private:
-    int shm_fd;
-    RingBuffer* ring_buffer;
-    bool is_initialized;
-};
+    // 映射共享内存
+    shm_addr = static_cast<RingBuffer*>(shmat(shm_id, nullptr, 0));
+    if (shm_addr == (void*) -1) {
+        perror("shmat failed");
+        return false;
+    }
 
-#endif // SHARED_MEMORY_RING_BUFFER_H
+    // 如果是初始化操作，设置环形缓冲区
+    if (initialize) {
+        shm_addr->head = 0;
+        shm_addr->tail = 0;
+    }
+
+    return true;
+}
+
+RingBuffer* SharedMemoryManager::getRingBuffer() {
+    return shm_addr;
+}
+
+void SharedMemoryManager::closeSharedMemory() {
+    if (shm_addr) {
+        shmdt(shm_addr);  // 分离共享内存
+        shm_addr = nullptr;
+    }
+    if (shm_id != -1) {
+        shmctl(shm_id, IPC_RMID, nullptr);  // 删除共享内存段
+        shm_id = -1;
+    }
+}
