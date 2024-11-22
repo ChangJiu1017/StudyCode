@@ -67,3 +67,8 @@ GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' WITH GRANT OPTION;
 
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'your_password';
 FLUSH PRIVILEGES;
+
+sudo apt remove --purge mysql-server mysql-client mysql-common mysql-server-core-* mysql-client-core-*
+sudo apt autoremove
+sudo apt clean
+
