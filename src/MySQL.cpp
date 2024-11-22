@@ -13,10 +13,10 @@ int main() {
         sql::Connection *con;
 
         // 连接到 MySQL 数据库
-        con = driver->connect("tcp://127.0.0.1:3306", "your_username", "your_password");
+        con = driver->connect("tcp://127.0.0.1:3306", "root", "123456");
 
         // 选择数据库
-        con->setSchema("your_database_name");
+        con->setSchema("my_database");
 
         // 创建 SQL 语句对象
         sql::Statement *stmt = con->createStatement();

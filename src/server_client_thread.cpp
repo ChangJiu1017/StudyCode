@@ -16,32 +16,25 @@ constexpr char SHM_NAME[] = "/shm_example";
 constexpr int THREAD_POOL_SIZE = 4;
 
 // 自旋锁类
-class SpinLock
-{
+class SpinLock {
     std::atomic_flag flag = ATOMIC_FLAG_INIT;
-
 public:
-    void lock()
-    {
-        while (flag.test_and_set(std::memory_order_acquire))
-            ;
+    void lock() {
+        while (flag.test_and_set(std::memory_order_acquire));
     }
-    void unlock()
-    {
+    void unlock() {
         flag.clear(std::memory_order_release);
     }
 };
 
 // 消息结构
-struct Message
-{
+struct Message {
     int client_id;
     char data[256];
 };
 
 // 服务端线程池
-class ThreadPool
-{
+class ThreadPool {
     std::vector<std::thread> workers;
     std::queue<Message> taskQueue;
     std::mutex queueMutex;
@@ -49,12 +42,9 @@ class ThreadPool
     bool stop = false;
 
 public:
-    ThreadPool(size_t threads)
-    {
-        for (size_t i = 0; i < threads; ++i)
-        {
-            workers.emplace_back([this]()
-                                 {
+    ThreadPool(size_t threads) {
+        for (size_t i = 0; i < threads; ++i) {
+            workers.emplace_back([this]() {
                 while (true) {
                     Message task;
                     {
@@ -66,12 +56,12 @@ public:
                         taskQueue.pop();
                     }
                     processTask(task);
-                } });
+                }
+            });
         }
     }
 
-    ~ThreadPool()
-    {
+    ~ThreadPool() {
         {
             std::unique_lock<std::mutex> lock(queueMutex);
             stop = true;
@@ -81,8 +71,7 @@ public:
             worker.join();
     }
 
-    void addTask(const Message &task)
-    {
+    void addTask(const Message& task) {
         {
             std::unique_lock<std::mutex> lock(queueMutex);
             taskQueue.push(task);
@@ -91,8 +80,7 @@ public:
     }
 
 private:
-    void processTask(const Message &task)
-    {
+    void processTask(const Message& task) {
         std::cout << "Processing client " << task.client_id << ": " << task.data << std::endl;
         // 模拟任务处理时间
         std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -100,22 +88,16 @@ private:
 };
 
 // 服务端类
-class Server
-{
+class Server {
     ThreadPool threadPool;
     SpinLock spinLock;
     sem_t semaphore;
 
     int shm_fd;
-    void *shared_memory;
-
-    static constexpr int MAX_MESSAGES = 10;
-    Message messageBuffer[MAX_MESSAGES];
-    int readIndex = 0, writeIndex = 0;
+    void* shared_memory;
 
 public:
-    Server() : threadPool(THREAD_POOL_SIZE)
-    {
+    Server() : threadPool(THREAD_POOL_SIZE) {
         // 创建共享内存
         shm_fd = shm_open(SHM_NAME, O_CREAT | O_RDWR, 0666);
         ftruncate(shm_fd, SHARED_MEMORY_SIZE);
@@ -125,69 +107,52 @@ public:
         sem_init(&semaphore, 0, 0);
     }
 
-    ~Server()
-    {
+    ~Server() {
         munmap(shared_memory, SHARED_MEMORY_SIZE);
         shm_unlink(SHM_NAME);
         sem_destroy(&semaphore);
     }
 
-    void start()
-    {
-        std::thread([this]()
-                    {
+    void start() {
+        std::thread([this]() {
             while (true) {
                 // 等待信号量通知
                 sem_wait(&semaphore);
                 
-                // 读取共享内存数据并存入缓冲区
+                // 使用自旋锁读取共享内存数据
                 spinLock.lock();
                 Message message;
                 std::memcpy(&message, shared_memory, sizeof(Message));
-
-                // 存入环形缓冲区
-                messageBuffer[writeIndex] = message;
-                writeIndex = (writeIndex + 1) % MAX_MESSAGES;
                 spinLock.unlock();
 
-                // 从缓冲区取消息处理
-                while (readIndex != writeIndex) {
-                    Message task = messageBuffer[readIndex];
-                    readIndex = (readIndex + 1) % MAX_MESSAGES;
-
-                    threadPool.addTask(task);
-                }
-            } })
-            .detach();
+                // 将任务交给线程池
+                threadPool.addTask(message);
+            }
+        }).detach();
     }
 
-    void notify()
-    {
+    void notify() {
         sem_post(&semaphore);
     }
 };
 
 // 客户端类
-class Client
-{
+class Client {
     int shm_fd;
-    void *shared_memory;
+    void* shared_memory;
 
 public:
-    Client()
-    {
+    Client() {
         // 打开共享内存
         shm_fd = shm_open(SHM_NAME, O_RDWR, 0666);
         shared_memory = mmap(nullptr, SHARED_MEMORY_SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, shm_fd, 0);
     }
 
-    ~Client()
-    {
+    ~Client() {
         munmap(shared_memory, SHARED_MEMORY_SIZE);
     }
 
-    void sendMessage(int client_id, const std::string &message)
-    {
+    void sendMessage(int client_id, const std::string& message) {
         Message msg;
         msg.client_id = client_id;
         std::strncpy(msg.data, message.c_str(), sizeof(msg.data));
@@ -200,7 +165,7 @@ public:
     }
 };
 
-
+// 测试代码
 int main() {
     Server server;
     server.start();
@@ -211,15 +176,8 @@ int main() {
     client1.sendMessage(1, "Hello from client 1");
     server.notify();
 
-    std::this_thread::sleep_for(std::chrono::milliseconds(500));
-
-    // 客户端 2 连续发送消息
-    client2.sendMessage(2, "Hello from client 2 - Message 1");
-    server.notify();
-
-    std::this_thread::sleep_for(std::chrono::milliseconds(500));
-
-    client2.sendMessage(2, "Hello from client 2 - Message 2");
+    // 客户端 2 发送消息
+    client2.sendMessage(2, "Hello from client 2");
     server.notify();
 
     // 模拟运行一段时间
@@ -227,4 +185,3 @@ int main() {
 
     return 0;
 }
-
