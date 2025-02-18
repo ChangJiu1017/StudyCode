@@ -40,4 +40,6 @@
 ### config use GitKranken
 ### make conan
 ### GitKranken
-#### 6.5.1 
+#### 6.5.1
+
+### macmini edit 
