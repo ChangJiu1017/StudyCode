@@ -42,4 +42,7 @@
 ### GitKranken
 #### 6.5.1
 
-### macmini edit 
+### macmini edit
+
+### code for terminal 
+
