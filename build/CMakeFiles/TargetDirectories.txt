@@ -1,0 +1,3 @@
+/Volumes/T7/Git/StudyCode/build/CMakeFiles/StudyCode.dir
+/Volumes/T7/Git/StudyCode/build/CMakeFiles/edit_cache.dir
+/Volumes/T7/Git/StudyCode/build/CMakeFiles/rebuild_cache.dir
