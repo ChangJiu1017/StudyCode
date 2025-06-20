@@ -1002,3 +1002,11 @@
 [   68.878287] phytium-dwmac 28210000.eth eth1: stmmac_open: Cannot attach to PHY (error: -22)
 [  106.443895] Bluetooth: BNEP (Ethernet Emulation) ver 1.3
 [  106.443919] Bluetooth: BNEP socket layer initialized
+[  369.221040] phytium-dwmac 28210000.eth eth1: validation of rgmii-txid with support 0000000,00000000,00006280 and advertisement 0000000,00000000,00006280 failed: -22
+[  369.221441] phytium-dwmac 28210000.eth eth1: stmmac_open: Cannot attach to PHY (error: -22)
+[  369.239241] phytium-dwmac 28210000.eth eth1: validation of rgmii-txid with support 0000000,00000000,00006280 and advertisement 0000000,00000000,00006280 failed: -22
+[  369.239769] phytium-dwmac 28210000.eth eth1: stmmac_open: Cannot attach to PHY (error: -22)
+[  369.258071] phytium-dwmac 28210000.eth eth1: validation of rgmii-txid with support 0000000,00000000,00006280 and advertisement 0000000,00000000,00006280 failed: -22
+[  369.258308] phytium-dwmac 28210000.eth eth1: stmmac_open: Cannot attach to PHY (error: -22)
+[  369.279573] phytium-dwmac 28210000.eth eth1: validation of rgmii-txid with support 0000000,00000000,00006280 and advertisement 0000000,00000000,00006280 failed: -22
+[  369.279860] phytium-dwmac 28210000.eth eth1: stmmac_open: Cannot attach to PHY (error: -22)
