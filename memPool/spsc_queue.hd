@@ -1,0 +1,67 @@
+#ifndef SPSC_QUEUE_H
+#define SPSC_QUEUE_H
+
+#include <stdint.h>
+#include <stdlib.h>
+
+#ifndef CACHELINE
+#define CACHELINE 64
+#endif
+
+#if defined(__GNUC__) || defined(__clang__)
+  #define SPSC_ALIGN(n) __attribute__((aligned(n)))
+#else
+  #define SPSC_ALIGN(n)
+#endif
+
+// 单生产者单消费者环形队列（容量=2^k），仅依赖角色固定与编译器屏障实现顺序保证[说明见文档]
+typedef struct spsc_queue {
+    SPSC_ALIGN(CACHELINE) volatile uint32_t head; // 仅消费者写，生产者读
+    SPSC_ALIGN(CACHELINE) volatile uint32_t tail; // 仅生产者写，消费者读
+    uint32_t cap_mask;                            // 容量-1（容量需为 2 的幂）
+    void**   buf;
+} spsc_queue;
+
+static inline void spsc_compiler_barrier(void) {
+    __asm__ __volatile__("" ::: "memory");
+}
+
+static inline int spsc_init(spsc_queue* q, uint32_t capacity_pow2) {
+    if (!q) return -1;
+    uint32_t cap = 1u << capacity_pow2;
+    q->buf = (void**)calloc(cap, sizeof(void*));
+    if (!q->buf) return -1;
+    q->head = 0;
+    q->tail = 0;
+    q->cap_mask = cap - 1u;
+    return 0;
+}
+
+static inline void spsc_free(spsc_queue* q) {
+    if (!q) return;
+    free(q->buf);
+    q->buf = NULL;
+}
+
+// 生产者：入队（满返回 0）
+static inline int spsc_enqueue(spsc_queue* q, void* p) {
+    uint32_t tail = q->tail;
+    uint32_t next = (tail + 1u) & q->cap_mask;
+    if (next == q->head) return 0;      // full
+    q->buf[tail] = p;                   // 先写数据
+    spsc_compiler_barrier();            // 防止写重排
+    q->tail = next;                     // 再发布 tail
+    return 1;
+}
+
+// 消费者：出队（空返回 NULL）
+static inline void* spsc_dequeue(spsc_queue* q) {
+    uint32_t head = q->head;
+    if (head == q->tail) return NULL;   // empty
+    void* p = q->buf[head];             // 读数据
+    spsc_compiler_barrier();            // 保序
+    q->head = (head + 1u) & q->cap_mask;
+    return p;
+}
+
+#endif

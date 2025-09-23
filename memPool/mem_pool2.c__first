@@ -1,0 +1,280 @@
+#define _GNU_SOURCE
+#include "memPool.h"
+#include "spsc_queue.h"
+#include "ring_buffer.h"
+
+#include <stdlib.h>
+#include <stdint.h>
+#include <string.h>
+#include <stdio.h>
+#include <assert.h>
+#include <malloc.h>
+#ifndef CACHELINE
+#define CACHELINE 64
+#endif
+
+#define BLOCK_SIZE   1024                 // 固定块大小
+#define PAGE_SIZE    (BLOCK_SIZE*4096)    // 每线程页大小，可调
+#define SPSC_POW2    12                   // 每条 SPSC 容量=2^12=4096
+#define MAX_THREADS  64                   // 最大线程数
+#define BLOCK_NUM 	10000
+
+typedef struct init_node {
+    unsigned long total_size;
+    uint8_t*      cur_base;
+    uint8_t*      mem_base;
+    ring_buffer   rb;     // 仅兼容保留，不用于并发
+} init_node;
+
+static init_node g_initNode;
+
+// 块头（仅本地使用 + 路由）
+typedef struct block {
+    struct block* next;
+    int           owner_tid;
+} block;
+
+// 线程页
+typedef struct page {
+    uint8_t* base;
+    uint8_t* curr;
+    uint8_t* end;
+    struct page* next;
+} page;
+
+// 线程本地池
+typedef struct thread_pool {
+    int     tid;
+    block*  local_free;
+    page*   cur_page;
+    page*   all_pages;
+    size_t  remote_drained;
+    spsc_queue inbox_from[MAX_THREADS]; // 来自各来源线程的 SPSC（生产者=来源，消费者=本线程）
+    int     inbox_ready[MAX_THREADS];
+    block*  deferred;                   // 邮箱满时临时滞留
+} thread_pool;
+
+// TLS（GCC 4.8.1 支持 __thread）
+static __thread thread_pool* tls_pool = NULL;
+
+// 全局线程表（简单实现）
+static thread_pool* g_threads[MAX_THREADS];
+static int          g_thread_count = 0;
+
+static page* alloc_page(size_t size) {
+    size_t align = 4096;
+    size_t req   = (size + align - 1) / align * align;
+    void* mem = NULL;
+#if defined(_POSIX_VERSION)
+    if (posix_memalign(&mem, align, req) != 0) mem = NULL;
+#else
+    mem = memalign(align, req); // 旧系统可能不可用，若不可用改用 posix_memalign
+#endif
+    if (!mem) return NULL;
+    page* pg = (page*)malloc(sizeof(page));
+    if (!pg) { free(mem); return NULL; }
+    pg->base = (uint8_t*)mem;
+    pg->curr = pg->base;
+    pg->end  = pg->base + req;
+    pg->next = NULL;
+    return pg;
+}
+
+int register_thread(void) {
+    if (tls_pool) return tls_pool->tid;
+    int tid = g_thread_count;
+    assert(tid < MAX_THREADS && "too many threads");
+
+    thread_pool* tp = (thread_pool*)calloc(1, sizeof(thread_pool));
+    assert(tp);
+    tp->tid = tid;
+    tp->local_free = NULL;
+    tp->cur_page = alloc_page(PAGE_SIZE);
+    assert(tp->cur_page);
+    tp->all_pages = tp->cur_page;
+    tp->remote_drained = 0;
+    tp->deferred = NULL;
+    for (int i = 0; i < MAX_THREADS; ++i) tp->inbox_ready[i] = 0;
+
+    g_threads[tid] = tp;
+    g_thread_count++;
+
+    // 为本线程准备消费端队列（来自已注册来源）
+    for (int src = 0; src < g_thread_count; ++src) {
+        if (src == tid) continue;
+        spsc_init(&tp->inbox_from[src], SPSC_POW2);
+        tp->inbox_ready[src] = 1;
+    }
+
+    // 已注册线程无需主动初始化生产端；生产者通过 g_threads[owner]->inbox_from[src] 访问即可
+    tls_pool = tp;
+    return tid;
+}
+
+int unregister_thread(void) {
+    thread_pool* tp = tls_pool;
+    if (!tp) return 0;
+    page* pg = tp->all_pages;
+    while (pg) {
+        page* nx = pg->next;
+        free(pg->base);
+        free(pg);
+        pg = nx;
+    }
+    tp->deferred = NULL;
+    g_threads[tp->tid] = NULL;
+    tls_pool = NULL;
+    return 0;
+}
+
+void init_pool(void) {
+
+    g_initNode.total_size = BLOCK_SIZE * BLOCK_NUM;
+    g_initNode.mem_base = (uint8_t*)memalign(0x1000, BLOCK_SIZE * BLOCK_NUM);
+    g_initNode.cur_base = g_initNode.mem_base;
+    uint64_t* meta = NULL;
+    meta = (uint64_t*)memalign(0x1000, ADDR_LEN * 10000ul);
+    RB_Init(&g_initNode.rb, meta, BLOCK_NUM);
+
+}
+
+static void* bump_alloc_block(thread_pool* tp) {
+    size_t need = sizeof(block) + BLOCK_SIZE;
+    if ((size_t)(tp->cur_page->end - tp->cur_page->curr) < need) {
+        page* np = alloc_page(PAGE_SIZE);
+        if (!np) return NULL;
+        np->next = tp->all_pages;
+        tp->all_pages = np;
+        tp->cur_page = np;
+    }
+    uint8_t* p = tp->cur_page->curr;
+    tp->cur_page->curr += need;
+    block* b = (block*)p;
+    b->owner_tid = tp->tid;
+    b->next = NULL;
+    return (void*)(p + sizeof(block));
+}
+
+static void drain_inboxes(thread_pool* tp) {
+    for (int src = 0; src < g_thread_count; ++src) {
+        if (src == tp->tid) continue;
+        if (!tp->inbox_ready[src]) continue;
+        spsc_queue* q = &tp->inbox_from[src];
+        for (;;) {
+            void* ptr = spsc_dequeue(q);
+            if (!ptr) break;
+            block* b = (block*)((uint8_t*)ptr - sizeof(block));
+            b->next = tp->local_free;
+            tp->local_free = b;
+            tp->remote_drained++;
+        }
+    }
+    // 处理延迟链（本线程可直接回收到本地）
+    while (tp->deferred) {
+        block* b = tp->deferred;
+        tp->deferred = b->next;
+        b->next = tp->local_free;
+        tp->local_free = b;
+    }
+}
+
+void* malloc_from_pool(size_t size) {
+//    if (!tls_pool) {
+    	register_thread();
+//    }
+    thread_pool* tp = tls_pool;
+
+    if (size == 0) return NULL;
+    if (size > BLOCK_SIZE) return malloc(size);
+
+    if (tp->local_free) {
+        block* b = tp->local_free;
+        tp->local_free = b->next;
+        return (void*)((uint8_t*)b + sizeof(block));
+    }
+    // 本地空时回捞
+    drain_inboxes(tp);
+    if (tp->local_free) {
+        block* b = tp->local_free;
+        tp->local_free = b->next;
+        return (void*)((uint8_t*)b + sizeof(block));
+    }
+    return bump_alloc_block(tp);
+}
+
+void* calloc_from_pool(size_t nmemb, size_t size) {
+    size_t total = nmemb * size;
+    if (total == 0) return NULL;
+    if (total > BLOCK_SIZE) return calloc(nmemb, size);
+    void* p = malloc_from_pool(total);
+    if (p) memset(p, 0, total);
+    return p;
+}
+
+void* realloc_from_pool(void* ptr, size_t uNewSize) {
+    if (!ptr) {
+        if (uNewSize == 0) return NULL;
+        if (uNewSize <= BLOCK_SIZE) return malloc_from_pool(uNewSize);
+        return realloc(NULL, uNewSize);
+    }
+    if (uNewSize == 0) {
+        free_to_pool(ptr);
+        return NULL;
+    }
+    block* b = (block*)((uint8_t*)ptr - sizeof(block));
+    if (uNewSize <= BLOCK_SIZE) {
+        return ptr;
+    } else {
+        void* np = malloc(uNewSize);
+        if (!np) return NULL;
+        memcpy(np, ptr, BLOCK_SIZE);
+        free_to_pool(ptr);
+        return np;
+    }
+}
+
+int free_to_pool(void* addr) {
+    if (!addr) return 0;
+    if (!tls_pool) register_thread();
+    thread_pool* tp = tls_pool;
+
+    block* b = (block*)((uint8_t*)addr - sizeof(block));
+    int owner = b->owner_tid;
+
+    if (owner == tp->tid) {
+        b->next = tp->local_free;
+        tp->local_free = b;
+        return 0;
+    }
+    thread_pool* owner_tp = g_threads[owner];
+    if (!owner_tp) {
+        free(addr);
+        return 0;
+    }
+    spsc_queue* q = &owner_tp->inbox_from[tp->tid];
+    if (!owner_tp->inbox_ready[tp->tid] || !spsc_enqueue(q, addr)) {
+        // 邮箱未就绪或已满：延迟到本线程
+        b->next = tp->deferred;
+        tp->deferred = b;
+    }
+    return 0;
+}
+
+size_t pool_total_bytes(void) {
+    size_t total = 0;
+    for (int i = 0; i < g_thread_count; ++i) {
+        thread_pool* tp = g_threads[i];
+        if (!tp) continue;
+        page* pg = tp->all_pages;
+        while (pg) {
+            total += (size_t)(pg->end - pg->base);
+            pg = pg->next;
+        }
+    }
+    return total;
+}
+
+size_t thread_remote_drained(void) {
+    if (!tls_pool) return 0;
+    return tls_pool->remote_drained;
+}
